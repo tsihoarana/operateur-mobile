@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Votre status</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  	<div class="logo-container">
+		<img alt="logo umobile" class="logo" src="assets/u-mobile.logo.png"/>
+	</div>
+  <ion-list>
+	<ion-item>
+		<ion-icon name="person" slot="start"></ion-icon>
+		{{ infos?.nom }} {{ infos?.prenom }} 
+		<ion-spinner name="crescent" *ngIf="is_loading" slot="end"></ion-spinner>
+	</ion-item>
+	<ion-item>
+		<ion-icon name="phone-portrait" slot="start"></ion-icon>
+		{{ infos?.numero }}
+		<ion-spinner name="crescent" *ngIf="is_loading" slot="end"></ion-spinner>
+	</ion-item>
+	<ion-item>
+		<ion-icon name="calculator" slot="start"></ion-icon>
+		Credit {{ infos?.total_credit }} Ar
+		<ion-spinner name="crescent" *ngIf="is_loading" slot="end"></ion-spinner>
+	</ion-item>
+	<ion-item>
+		<ion-icon name="logo-usd" slot="start"></ion-icon>
+		Mvola {{ infos?.total_mvola }} Ar
+		<ion-spinner name="crescent" *ngIf="is_loading" slot="end"></ion-spinner>
+	</ion-item>	
+	<ion-item>
+		<ion-text color="danger">{{ error_message }}</ion-text>
+	</ion-item>	
+  </ion-list>
+  <ion-button expand="block" color="success" [routerLink]="['/simuler-appel']">
+  	<ion-icon name="call" slot="start"></ion-icon>
+  	Appeler un numero
+  </ion-button>
+  <ion-button expand="block" color="primary" [routerLink]="['/sms']">
+	<ion-icon name="mail" slot="start"></ion-icon>
+		Simuler sms
+	</ion-button>
+	<ion-button expand="block" color="secondary" [routerLink]="['/internet']">
+		<ion-icon name="globe" slot="start"></ion-icon>
+			Simuler internet
+		</ion-button>
+  <ion-button expand="block" color="tertiary" [routerLink]="['/simulation']">
+	Simuler autre chose
+</ion-button>
+</ion-content>

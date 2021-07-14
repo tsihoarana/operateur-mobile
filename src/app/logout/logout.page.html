@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Deconnexion</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-text class="text-center"> Etes-vous sur(e) ?</ion-text>
+    <ion-item>
+      <ion-button (click) = "logoutForReal()" color="danger">Oui</ion-button>
+      <ion-button [routerLink]="['/accueil']" color="primary">Non</ion-button>
+    </ion-item>
+  </ion-item>
+</ion-content>

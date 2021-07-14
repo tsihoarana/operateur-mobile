@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Achat credit
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+      <ion-spinner name="crescent" *ngIf="is_loading" slot="end"></ion-spinner>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Montant</ion-label>
+    <ion-input type="text" [(ngModel)] = "montant" required></ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-button type="submit" (click) = "acheter()" color="success" expand="block" [disabled]="is_loading">Acheter</ion-button>
+      <ion-text color="danger">{{ error_msg }}</ion-text>
+    </ion-col>
+  </ion-row>
+</ion-content>

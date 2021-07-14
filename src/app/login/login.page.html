@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Connexion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+      <ion-spinner name="crescent" *ngIf="is_loading" slot="end"></ion-spinner>
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="logo-container">
+		<img alt="logo umobile" class="logo" src="assets/u-mobile.logo.png"/>
+	</div>
+    <ion-item lines="full">
+      <ion-label position="floating">Numero de telephone</ion-label>
+      <ion-input type="text" [(ngModel)] = "numero" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Mot de passe</ion-label>
+      <ion-input type="password" [(ngModel)] = "password"  required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" (click) = "seConnecter()" color="primary" expand="block">Connecter</ion-button>
+        <ion-button type="submit"  [routerLink]="['/inscription']" color="success" expand="block">S'inscrire</ion-button>
+        <ion-text color="danger">{{ error_msg }}</ion-text>
+      </ion-col>
+    </ion-row>
+</ion-content>

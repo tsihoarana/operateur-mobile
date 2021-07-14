@@ -1,0 +1,11 @@
+<ion-item id="spinner" lines="none" *ngIf="show_spinner">
+  <ion-spinner></ion-spinner>
+</ion-item>
+<ion-list id="error_message" lines="none">
+  <ion-item lines="none">
+    <ion-text><ion-icon name="alert-circle"></ion-icon></ion-text>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-text>{{ error_message }}</ion-text>
+  </ion-item>
+</ion-list>

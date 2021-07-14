@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inscription</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+      <ion-spinner name="crescent" *ngIf="is_loading" slot="end"></ion-spinner>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Numero</ion-label>
+    <ion-input type="text" [(ngModel)] = "numero" required></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Nom</ion-label>
+    <ion-input type="text" [(ngModel)] = "nom" required></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Prenom</ion-label>
+    <ion-input type="text" [(ngModel)] = "prenom" required></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Date Naissance</ion-label>
+    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="date_naissance"></ion-datetime>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Mot de passe</ion-label>
+    <ion-input type="password" [(ngModel)] = "password" required></ion-input>
+  </ion-item>
+
+  <ion-row>
+    <ion-col>
+      <ion-button type="submit" (click)="sInscrire()" color="primary" expand="block" [disabled]="is_loading">Inscription</ion-button>
+      <ion-button type="submit"  [routerLink]="['/login']" color="success" expand="block">Se connecter</ion-button>
+      <ion-text> {{ message }} </ion-text>
+    </ion-col>
+  </ion-row>
+</ion-content>

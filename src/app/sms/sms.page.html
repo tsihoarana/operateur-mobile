@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Simuler sms
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+      <ion-spinner name="crescent" *ngIf="is_loading" slot="end"></ion-spinner>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Numero destinataire</ion-label>
+    <ion-input type="text" [(ngModel)] = "cible" required></ion-input>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">Objet</ion-label>
+    <ion-input type="text" [(ngModel)] = "objet" required></ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-button type="submit" (click) = "envoyer()" color="success" expand="block" [disabled]="is_loading">
+        Envoyer
+      </ion-button>
+      <ion-text color="danger">{{ message }}</ion-text>
+      <ion-text color="danger">{{ error_msg }}</ion-text>
+    </ion-col>
+  </ion-row>
+</ion-content>

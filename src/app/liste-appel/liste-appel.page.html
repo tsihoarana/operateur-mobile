@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Appels
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+      <ion-spinner name="crescent" *ngIf="is_loading" slot="end"></ion-spinner>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item *ngIf = "error_message != ''">
+      <ion-label color="danger">{{ error_message }} </ion-label>
+    </ion-item>
+    <ion-item *ngIf="empty_list" slot="right">
+		  <ion-label>La liste est vide !</ion-label>
+	  </ion-item>
+    <ion-item-group *ngFor="let appel of liste_appel">
+      <ion-item>
+        <ion-icon name="call" slot="start"></ion-icon>
+        <ion-label>{{ appel.numeroCible }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label> {{ appel.date }} ({{ appel.duree }}) </ion-label>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+</ion-content>
